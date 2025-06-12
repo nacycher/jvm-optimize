@@ -77,6 +77,54 @@
         </trim>
     </insert>
 
+    <insert id="insertBatch" parameterType="java.util.List">
+        insert into people
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="list[0].name != null">name,</if>
+            <if test="list[0].age != null">age,</if>
+            <if test="list[0].sex != null">sex,</if>
+            <if test="list[0].address != null">address,</if>
+            <if test="list[0].phone != null">phone,</if>
+            <if test="list[0].email != null">email,</if>
+            <if test="list[0].idCard != null">id_card,</if>
+            <if test="list[0].password != null">password,</if>
+            <if test="list[0].remark != null">remark,</if>
+            <if test="list[0].createUser != null">create_user,</if>
+            <if test="list[0].updateUser != null">update_user,</if>
+            <if test="list[0].createTime != null">create_time,</if>
+            <if test="list[0].updateTime != null">update_time,</if>
+            <if test="list[0].isDeleted != null">is_deleted,</if>
+            <if test="list[0].version != null">version,</if>
+            <if test="list[0].status != null">status,</if>
+            <if test="list[0].sort != null">sort,</if>
+            <if test="list[0].createDate != null">create_date,</if>
+        </trim>
+        values
+        <foreach collection="list" item="item" separator=",">
+            <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="item.name != null">#{item.name},</if>
+                <if test="item.age != null">#{item.age},</if>
+                <if test="item.sex != null">#{item.sex},</if>
+                <if test="item.address != null">#{item.address},</if>
+                <if test="item.phone != null">#{item.phone},</if>
+                <if test="item.email != null">#{item.email},</if>
+                <if test="item.idCard != null">#{item.idCard},</if>
+                <if test="item.password != null">#{item.password},</if>
+                <if test="item.remark != null">#{item.remark},</if>
+                <if test="item.createUser != null">#{item.createUser},</if>
+                <if test="item.updateUser != null">#{item.updateUser},</if>
+                <if test="item.createTime != null">#{item.createTime},</if>
+                <if test="item.updateTime != null">#{item.updateTime},</if>
+                <if test="item.isDeleted != null">#{item.isDeleted},</if>
+                <if test="item.version != null">#{item.version},</if>
+                <if test="item.status != null">#{item.status},</if>
+                <if test="item.sort != null">#{item.sort},</if>
+                <if test="item.createDate != null">#{item.createDate},</if>
+            </trim>
+        </foreach>
+    </insert>
+
+
     <!-- 根据ID删除 -->
     <delete id="deleteById" parameterType="java.lang.Long">
         delete from people where id = #{id}

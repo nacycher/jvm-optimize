@@ -15,6 +15,11 @@ public interface PeopleMapper {
     int insert(People people);
 
     /**
+     * 批量插入人员信息
+     */
+    int insertBatch(List<People> peoples);
+
+    /**
      * 根据ID删除人员信息
      */
     int deleteById(@Param("id") Long id);
